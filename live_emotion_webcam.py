@@ -12,7 +12,7 @@ except Exception:
 
 # Load the trained model
 print("Loading model...")
-model = load_model("emotion_model.h5")
+model = load_model("emotion_recognition_CNN.h5")
 
 print("Model loaded!")
 

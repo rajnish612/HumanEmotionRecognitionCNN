@@ -92,6 +92,16 @@ def main():
 
             st.success(f"Prediction: {label} ({conf*100:.1f}%)")
 
+    with col2:
+        st.header("Upload Image")
+        uploaded = st.file_uploader("Or upload an image", type=["png", "jpg", "jpeg"])
+        if uploaded is not None:
+            img2 = Image.open(uploaded).convert("RGB")
+            roi2, annotated2 = preprocess_image(img2, face_cascade)
+            st.image(annotated2, caption="Uploaded (annotated)", use_column_width=True)
+            label2, conf2, preds2 = predict_emotion(model, roi2, labels)
+            st.success(f"Prediction: {label2} ({conf2*100:.1f}%)")
+
 
 if __name__ == "__main__":
     main()
